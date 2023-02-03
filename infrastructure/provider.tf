@@ -11,6 +11,6 @@ terraform {
   backend "s3" {
     bucket = "terrafor-state-igti-rui"
     key    = "state/igti/edc/mod1/terraform.tfstate"
-    region = "us-east1"
+    region = "us-east-1"
   }
 }

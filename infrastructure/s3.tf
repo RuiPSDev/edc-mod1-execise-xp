@@ -21,19 +21,3 @@ resource "aws_s3_bucket_acl" "datalake-tf" {
   bucket = aws_s3_bucket.datalake-tf.id
   acl = "private"
 }
-
-resource "aws_kms_key" "mykey" {
-  description = "Esta chave é utilizada para encriptar os objetos do bucket"
-  deletion_window_in_days = 10
-}
-
-resource "aws_s3_object" "codigo_spark" {
-  bucket = aws_s3_bucket.datalake-tf.id
-  key    = "emr-code/pyspark/job_spark_from_tf.py"
-  source = "../job_spark.py"
-  etag   = filemd5("../job_spark.py")
-}
-
-provider "aws" {
-  region = "us-east-1"
-}
